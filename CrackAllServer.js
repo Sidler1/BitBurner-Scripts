@@ -1,5 +1,6 @@
 /** @param host
  @param {NS} ns **/
+;
 
 function getRootAccess(host, ns) {
     try {

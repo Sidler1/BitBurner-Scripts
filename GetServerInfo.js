@@ -1,5 +1,5 @@
 /** @param {NS} ns **/
-// import ;
+;
 
 export async function main(ns) {
     let ServerList = ns.scan();

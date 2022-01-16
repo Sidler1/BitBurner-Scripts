@@ -1,4 +1,6 @@
 /** @param {NS} ns **/
+;
+
 export async function main(ns) {
     ns.clearLog();
     while (true) {

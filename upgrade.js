@@ -1,4 +1,6 @@
 /** @param {NS} ns **/
+;
+
 export async function main(ns) {
     ns.disableLog("hacknet.getLevelUpgradeCost");
     ns.disableLog("getServerMoneyAvailable");
