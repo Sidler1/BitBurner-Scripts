@@ -20,9 +20,6 @@ function getRootAccess(host, ns) {
     }
 }
 
-/** @param {NS} ns **/
-// import 'bitburner';
-
 export async function main(ns) {
     let serverList = ns.scan();
     for (const element of serverList) {
@@ -30,7 +27,7 @@ export async function main(ns) {
             ns.print('Not Hacking Back!');
         } else {
             getRootAccess(element, ns);
-            ns.run("CopyScriptsToServer.js", 1, element)
+            await ns.run("CopyScriptsToServer.js", 1, element)
             await ns.sleep(1000);
             ns.exec("CrackAllServer.js", element, 1, ns.getHostname());
         }

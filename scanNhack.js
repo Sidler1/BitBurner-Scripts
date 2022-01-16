@@ -20,20 +20,20 @@ function getRootAccess(host, ns) {
 }
 
 async function ScanForServers(ns) {
-    var serverList = ns.scan();
-    for (var x = 0; x < serverList.length; x++) {
+    const serverList = ns.scan();
+    for (let x = 0; x < serverList.length; x++) {
         if (serverList.length <= 1) {
             ns.exit();
             ns.killall(serverList[x]);
         }
-        if (serverList[x] == "home" || serverList[x] == "Volhaven-node" || serverList[x] == "darkweb" || serverList[x] == "n00dles" || serverList[x] == "CSEC" || serverList[x] == ns.args[0]) {
+        if (serverList[x] === "home" || serverList[x] === "Volhaven-node" || serverList[x] === "darkweb" || serverList[x] === "n00dles" || serverList[x] === "CSEC" || serverList[x] === ns.args[0]) {
             continue;
         }
         if (!ns.hasRootAccess(serverList[x])) {
             getRootAccess(serverList[x], ns);
         } else {
             ns.killall(serverList[x]);
-            ns.run('CopyScriptsToServers.js', 1, serverList[x]);
+            await ns.run('CopyScriptsToServers.js', 1, serverList[x]);
             await ns.sleep(1000);
             ns.exec('scanNhack.js', serverList[x], 1, ns.getHostname());
             await ns.sleep(1000);

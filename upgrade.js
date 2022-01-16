@@ -5,10 +5,10 @@ export async function main(ns) {
     ns.disableLog("hacknet.getLevelUpgradeCost");
     ns.disableLog("getServerMoneyAvailable");
     ns.disableLog("sleep");
-    var HacknetServers = ns.hacknet.numNodes();
+    let HacknetServers = ns.hacknet.numNodes();
     while (true) {
-        for (var x = 0; x < HacknetServers; x++) {
-            UpgradeHacknetServer(x, ns);
+        for (let x = 0; x < HacknetServers; x++) {
+            await UpgradeHacknetServer(x, ns);
             await ns.sleep(1);
         }
         HacknetServers = ns.hacknet.numNodes();

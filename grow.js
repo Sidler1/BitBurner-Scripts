@@ -2,9 +2,9 @@
 ;
 
 export async function main(ns) {
-    var HostName = ns.args[0];
-    var ServerMaxMoney = ns.getServerMaxMoney(HostName);
-    var ServerMoney = ns.getServerMoneyAvailable(HostName) * 1.2;
+    const HostName = ns.args[0];
+    const ServerMaxMoney = ns.getServerMaxMoney(HostName);
+    let ServerMoney = ns.getServerMoneyAvailable(HostName) * 1.2;
     while (true) {
         if (ServerMaxMoney > ServerMoney) {
             await ns.grow(HostName, {threads: 1});

@@ -2,12 +2,12 @@
 ;
 
 export async function main(ns) {
-    var HostName = ns.args[0];
-    var MinSecLevel = ns.getServerMinSecurityLevel(HostName) * 1.2;
-    var SecLevel = ns.getServerSecurityLevel(HostName);
+    const HostName = ns.args[0];
+    const MinSecLevel = ns.getServerMinSecurityLevel(HostName) * 1.2;
+    let SecLevel = ns.getServerSecurityLevel(HostName);
     while (true) {
         if (MinSecLevel < SecLevel) {
-            await ns.weaken(HostName, {threads: 1});
+            await ns.weaken(HostName);
             SecLevel = ns.getServerSecurityLevel(HostName);
         } else {
             await ns.sleep(30 * 1000)
